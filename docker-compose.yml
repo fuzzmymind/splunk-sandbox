@@ -1,0 +1,13 @@
+version: "3"
+services:
+  splunk-sandbox:
+    restart: on-failure
+    image: splunk/splunk:latest
+    ports:
+      - "9000:8000"
+      - "9088:8088"
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=${PASS}
+    volumes:
+      - ./apps/playground:/opt/splunk/etc/apps/playground
